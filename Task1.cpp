@@ -69,11 +69,10 @@ public:
 };
 
 int main() {
-    MenuNode* rootMenu = createMenu();// Create menu structure
-    MenuNavigator navigator(rootMenu);  // Create navigator and start navigation
-    navigator.navigate();// Cleanup memory (not shown for simplicity)
-    // Free allocated memory for menu nodes
-    delete rootMenu; // You should implement a proper cleanup method for all nodes
+    MenuNode* rootMenu = createMenu();
+    MenuNavigator navigator(rootMenu);  
+    navigator.navigate();
+    delete rootMenu; 
     return 0;
 }
 
