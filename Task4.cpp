@@ -6,11 +6,8 @@ class Theme {
 public:
     // Default constructor
     Theme() : backgroundColor("White"), fontColor("Black"), fontSize(12), iconStyle("Standard") {}
-
-    // Parameterized constructor
     Theme(const std::string& bgColor, const std::string& fColor, int fSize, const std::string& icon)
         : backgroundColor(bgColor), fontColor(fColor), fontSize(fSize), iconStyle(icon) {}
-
     void apply() const {
         std::cout << "Applying Theme:\n";
         std::cout << "Background Color: " << backgroundColor << "\n";
@@ -18,14 +15,12 @@ public:
         std::cout << "Font Size: " << fontSize << "\n";
         std::cout << "Icon Style: " << iconStyle << "\n";
     }
-
     void displayPreview() const {
         std::cout << "Preview of Theme:\n";
         std::cout << "Background: " << backgroundColor << ", Font: " 
                   << fontColor << ", Size: " << fontSize 
                   << ", Icons: " << iconStyle << "\n";
     }
-
 private:
     std::string backgroundColor;
     std::string fontColor;
@@ -36,7 +31,6 @@ private:
 class ThemeManager {
 public:
     ThemeManager() {
-        // Initialize with some themes
         themes["Classic"] = Theme("White", "Black", 12, "Standard");
         themes["Sport"] = Theme("Red", "White", 14, "Bold");
         themes["Eco"] = Theme("Green", "DarkGreen", 10, "Minimalist");
@@ -48,7 +42,6 @@ public:
             std::cout << "- " << theme.first << "\n";
         }
     }
-
     void switchTheme(const std::string& themeName) {
         auto it = themes.find(themeName);
         if (it != themes.end()) {
@@ -58,11 +51,9 @@ public:
             std::cout << "Theme not found!\n";
         }
     }
-
 private:
     std::map<std::string, Theme> themes;
 };
-
 int main() {
     ThemeManager themeManager;
     std::string selectedTheme;
