@@ -3,17 +3,17 @@
 #include <chrono>
 #include <random>
 #include <atomic>
-
+using nmaespace std;
 class VehicleData {
 public:
     VehicleData() : speed(0), fuelLevel(100), engineTemperature(70) {}
     // Update vehicle parameters with random values
     void update() {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> speedDist(0, 150); // Speed: 0 to 150 km/h
-        std::uniform_int_distribution<> fuelDist(0, 100); // Fuel: 0% to 100%
-        std::uniform_int_distribution<> tempDist(60, 120); // Temperature: 60°C to 120°C
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> speedDist(0, 150); // Speed: 0 to 150 km/h
+        uniform_int_distribution<> fuelDist(0, 100); // Fuel: 0% to 100%
+        uniform_int_distribution<> tempDist(60, 120); // Temperature: 60°C to 120°C
 
         speed = speedDist(gen);
         fuelLevel = fuelDist(gen);
@@ -34,36 +34,36 @@ public:
     void show() {
         while (true) {
             system("clear"); // Clear the console (use "cls" on Windows)
-            std::cout << "Speed: " << vehicleData.getSpeed() << " km/h\n";
-            std::cout << "Fuel Level: " << vehicleData.getFuelLevel() << "%\n";
-            std::cout << "Engine Temperature: " << vehicleData.getEngineTemperature() << "°C\n";
+            cout << "Speed: " << vehicleData.getSpeed() << " km/h\n";
+            cout << "Fuel Level: " << vehicleData.getFuelLevel() << "%\n";
+            cout << "Engine Temperature: " << vehicleData.getEngineTemperature() << "°C\n";
 
             checkWarnings();
 
-            std::this_thread::sleep_for(std::chrono::seconds(1)); // Update every second
+            this_thread::sleep_for(chrono::seconds(1)); // Update every second
         }
     }
 private:
     const VehicleData& vehicleData;
     void checkWarnings() {
         if (vehicleData.getEngineTemperature() > 100) {
-            std::cout << "Warning: Engine temperature is too high!\n";
+            cout << "Warning: Engine temperature is too high!\n";
         }
         if (vehicleData.getFuelLevel() < 10) {
-            std::cout << "Warning: Fuel level is critically low!\n";
+            cout << "Warning: Fuel level is critically low!\n";
         }
     }
 };
 void updateVehicleData(VehicleData& data) {
     while (true) {
         data.update();
-        std::this_thread::sleep_for(std::chrono::seconds(1)); // Update every second
+        this_thread::sleep_for(chrono::seconds(1)); // Update every second
     }
 }
 int main() {
     VehicleData vehicleData;
     // Start a thread to update vehicle data
-    std::thread updater(updateVehicleData, std::ref(vehicleData));
+    thread updater(updateVehicleData, ref(vehicleData));
     // Create a display instance and show the data
     Display display(vehicleData);
     display.show();
@@ -71,3 +71,20 @@ int main() {
     updater.join();
     return 0;
 }
+/*sample output
+Speed: 85 km/h
+Fuel Level: 45%
+Engine Temperature: 90°C
+
+Speed: 72 km/h
+Fuel Level: 30%
+Engine Temperature: 95°C
+
+Speed: 120 km/h
+Fuel Level: 5%
+Engine Temperature: 110°C
+Warning: Engine temperature is too high!
+Warning: Fuel level is critically low!
+
+...
+*/
