@@ -10,22 +10,21 @@ public:
     void update() {
         random_device rd;
         mt19937 gen(rd());
-        uniform_int_distribution<> speedDist(0, 150); // Speed: 0 to 150 km/h
-        uniform_int_distribution<> fuelDist(0, 100); // Fuel: 0% to 100%
-        uniform_int_distribution<> tempDist(60, 120); // Temperature: 60°C to 120°C
+        uniform_int_distribution<> speedDist(0, 150); 
+        uniform_int_distribution<> fuelDist(0, 100); 
+        uniform_int_distribution<> tempDist(60, 120); 
 
         speed = speedDist(gen);
         fuelLevel = fuelDist(gen);
         engineTemperature = tempDist(gen);
     }
-    // Getters for the parameters
     int getSpeed() const { return speed; }
     int getFuelLevel() const { return fuelLevel; }
     int getEngineTemperature() const { return engineTemperature; }
 private:
-    int speed;                // Speed in km/h
-    int fuelLevel;            // Fuel level in percentage
-    int engineTemperature;     // Engine temperature in °C
+    int speed;               
+    int fuelLevel;            
+    int engineTemperature;     
 };
 class Display {
 public:
@@ -39,7 +38,7 @@ public:
 
             checkWarnings();
 
-            this_thread::sleep_for(chrono::seconds(1)); // Update every second
+            this_thread::sleep_for(chrono::seconds(1)); 
         }
     }
 private:
@@ -56,7 +55,7 @@ private:
 void updateVehicleData(VehicleData& data) {
     while (true) {
         data.update();
-        this_thread::sleep_for(chrono::seconds(1)); // Update every second
+        this_thread::sleep_for(chrono::seconds(1));
     }
 }
 int main() {
