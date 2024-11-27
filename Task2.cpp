@@ -7,7 +7,6 @@ using nmaespace std;
 class VehicleData {
 public:
     VehicleData() : speed(0), fuelLevel(100), engineTemperature(70) {}
-    // Update vehicle parameters with random values
     void update() {
         random_device rd;
         mt19937 gen(rd());
@@ -62,12 +61,9 @@ void updateVehicleData(VehicleData& data) {
 }
 int main() {
     VehicleData vehicleData;
-    // Start a thread to update vehicle data
     thread updater(updateVehicleData, ref(vehicleData));
-    // Create a display instance and show the data
     Display display(vehicleData);
     display.show();
-    // Join the updater thread (not reachable in this case)
     updater.join();
     return 0;
 }
