@@ -4,7 +4,6 @@
 
 class Theme {
 public:
-    // Default constructor
     Theme() : backgroundColor("White"), fontColor("Black"), fontSize(12), iconStyle("Standard") {}
     Theme(const std::string& bgColor, const std::string& fColor, int fSize, const std::string& icon)
         : backgroundColor(bgColor), fontColor(fColor), fontSize(fSize), iconStyle(icon) {}
