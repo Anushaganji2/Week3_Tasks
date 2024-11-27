@@ -76,3 +76,61 @@ int main() {
     delete rootMenu; // You should implement a proper cleanup method for all nodes
     return 0;
 }
+
+/*sample output
+Main Menu:
+1. Settings
+2. Media
+0. Back
+Choose an option: 1
+Settings:
+1. Display Settings
+2. Audio Settings
+0. Back
+Choose an option: 1
+Display Settings:
+0. Back
+Choose an option: 0
+Settings:
+1. Display Settings
+2. Audio Settings
+0. Back
+Choose an option: 2
+Audio Settings:
+0. Back
+Choose an option: 0
+Settings:
+1. Display Settings
+2. Audio Settings
+0. Back
+Choose an option: 0
+Main Menu:
+1. Settings
+2. Media
+0. Back
+Choose an option: 2
+Media:
+1. Radio
+2. Bluetooth Audio
+0. Back
+Choose an option: 1
+Radio:
+0. Back
+Choose an option: 0
+Media:
+1. Radio
+2. Bluetooth Audio
+0. Back
+Choose an option: 0
+Main Menu:
+1. Settings
+2. Media
+0. Back
+Choose an option: 3
+Invalid choice. Please try again.
+Main Menu:
+1. Settings
+2. Media
+0. Back
+Choose an option: 0
+You are at the main menu. Cannot go back further.*/
