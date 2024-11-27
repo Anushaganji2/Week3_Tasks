@@ -1,13 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+using namespace std;
 class MenuNode {
 public:
-    std::string name;
-    std::vector<MenuNode*> children;
+   string name;
+   vector<MenuNode*> children;
 
-    MenuNode(const std::string& name) : name(name) {}
+    MenuNode(conststring& name) : name(name) {}
 
     void addChild(MenuNode* child) {
         children.push_back(child);
@@ -36,19 +36,19 @@ public:
     MenuNavigator(MenuNode* root) : currentMenu(root), previousMenu(nullptr) {}
 
     void displayMenu() {
-        std::cout << currentMenu->name << ":\n";
+       cout << currentMenu->name << ":\n";
         for (size_t i = 0; i < currentMenu->children.size(); ++i) {
-            std::cout << i + 1 << ". " << currentMenu->children[i]->name << "\n";
+           cout << i + 1 << ". " << currentMenu->children[i]->name << "\n";
         }
-        std::cout << "0. Back\n";
+       cout << "0. Back\n";
     }
 
     void navigate() {
         int choice;
         while (true) {
             displayMenu();
-            std::cout << "Choose an option: ";
-            std::cin >> choice;
+           cout << "Choose an option: ";
+           cin >> choice;
 
             if (choice > 0 && choice <= currentMenu->children.size()) {
                 previousMenu = currentMenu; // Store the previous menu
@@ -59,10 +59,10 @@ public:
                     currentMenu = previousMenu;
                     previousMenu = nullptr; // Reset previous menu
                 } else {
-                    std::cout << "You are at the main menu. Cannot go back further.\n";
+                   cout << "You are at the main menu. Cannot go back further.\n";
                 }
             } else {
-                std::cout << "Invalid choice. Please try again.\n";
+               cout << "Invalid choice. Please try again.\n";
             }
         }
     }
