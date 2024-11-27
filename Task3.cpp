@@ -83,3 +83,8 @@ int main() {
 
     return 0;
 }
+/*TAP at (23, 45) at timestamp 1672446556
+SWIPE from (12, 34) to (56, 78) - Direction: Down at timestamp 1672446556
+TAP at (67, 89) at timestamp 1672446556
+SWIPE from (22, 11) to (33, 44) - Direction: Right at timestamp 1672446556
+...*/
